@@ -21,20 +21,25 @@ var Calculator = function() {
 		[ [this.operations.multiply], [this.operations.divide], [this.operations.exponentiate] ], 
 		[ [this.operations.add], [this.operations.subtract] ]
 	];
+	this.special_cases = {
+		equals: '=',
+		clear_all: 'C',
+		clear_last: '<-'
+	};
 
 	this.handleInput = function(i) {
 		switch (i) {
-			case '=':
+			case this.special_cases.equals:
 				var screen = document.getElementById(defaults.calculator_screen);
 				var expression = screen.value;
 				screen.value = this.calculate();
 				if (screen.value !== '')
 					document.getElementById(defaults.history_text).innerHTML += expression + ' = ' + screen.value + '<br />' ;
 				break;
-			case 'C':
+			case this.special_cases.clear_all:
 				this.clearScreen();
 				break;
-			case '<-':
+			case this.special_cases.clear_last:
 				this.clearLastCharacter();
 				break;
 			default:	
