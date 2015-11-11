@@ -151,7 +151,7 @@ button:focus {
 .history {
 	color: #fff;
 	position: relative;
-	overflow: scroll;
+	overflow-y: scroll;
 }
 
 .history:hover {
