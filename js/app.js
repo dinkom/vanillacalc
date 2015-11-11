@@ -1,5 +1,5 @@
 /**
- * CalcEyeo calculator app
+ * VanillaCalc app
  *
  * https://github.com/dinkom/vanillacalc
  *

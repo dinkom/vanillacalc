@@ -1,5 +1,5 @@
 /**
- * CalcEyeo calculator site setup & helpers
+ * VanillaCalc site setup & helpers
  *
  * https://github.com/dinkom/vanillacalc
  *
