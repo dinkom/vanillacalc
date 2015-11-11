@@ -97,15 +97,30 @@ var Calculator = function() {
 	this.bindEvents = function() {
 		var actions = document.getElementsByClassName(defaults.action_buttons);
 		for (var i = 0; i < actions.length; ++i) {
-			actions[i].addEventListener('click', function(el) {
-				self.handleInput(el.currentTarget.innerText);
-			});
+			if (actions[i].addEventListener) {
+				actions[i].addEventListener('click', function(el) {
+					self.handleInput(el.currentTarget.innerText);
+				});
+			}
+			else {
+				actions[i].attachEvent('onclick', function(el) {
+					self.handleInput(el.srcElement.innerText);
+				});
+			}
 		}
 
 		var clear_history = document.getElementById(defaults.clear_history);
-		clear_history.addEventListener('click', function() {
-			self.clearHistory();
-		});
+		if (clear_history.addEventListener) {
+			clear_history.addEventListener('click', function() {
+				self.clearHistory();
+			});
+		}
+		else {
+			clear_history.attachEvent('onclick', function() {
+				self.clearHistory();
+			});
+		}
+		
 	};
 };
 
