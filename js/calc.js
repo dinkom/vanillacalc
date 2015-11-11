@@ -23,18 +23,22 @@ var Calculator = function() {
 	];
 
 	this.handleInput = function(i) {
-		if (i === '=') {
-			var screen = document.getElementById(defaults.calculator_screen);
-			var expression = screen.value;
-			screen.value = this.calculate();
-			if (screen.value !== '')
-				document.getElementById(defaults.history_text).innerHTML += expression + ' = ' + screen.value + '<br />' ;
-		}	
-		else if (i === 'C') {
-			this.clearScreen();
-		}
-		else {
-			this.addToScreen(i);
+		switch (i) {
+			case '=':
+				var screen = document.getElementById(defaults.calculator_screen);
+				var expression = screen.value;
+				screen.value = this.calculate();
+				if (screen.value !== '')
+					document.getElementById(defaults.history_text).innerHTML += expression + ' = ' + screen.value + '<br />' ;
+				break;
+			case 'C':
+				this.clearScreen();
+				break;
+			case '<-':
+				this.clearLastCharacter();
+				break;
+			default:	
+				this.addToScreen(i);	
 		}
 	};
 
@@ -79,6 +83,12 @@ var Calculator = function() {
 				break;
 			default: null;
       	}
+	};
+
+	this.clearLastCharacter = function() {
+		var current_value = document.getElementById(defaults.calculator_screen).value;
+		current_value = current_value.substring(0, current_value.length - 1);
+		document.getElementById(defaults.calculator_screen).value = current_value;
 	};
 
 	this.clearScreen = function() {
