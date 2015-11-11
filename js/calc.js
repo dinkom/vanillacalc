@@ -95,7 +95,7 @@ var Calculator = function() {
 	};
 
 	this.bindEvents = function() {
-		var actions = document.getElementsByClassName('action');
+		var actions = document.getElementsByClassName(defaults.action_buttons);
 		for (var i = 0; i < actions.length; ++i) {
 			actions[i].addEventListener('click', function(el) {
 				self.handleInput(el.currentTarget.innerText);
@@ -112,5 +112,6 @@ var Calculator = function() {
 var defaults = {
 	calculator_screen: 'calc-screen',
 	history_text: 'history-text',
-	clear_history: 'clear-history'
+	clear_history: 'clear-history',
+	action_buttons: 'action'
 };
