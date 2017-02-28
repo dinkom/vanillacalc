@@ -10,15 +10,15 @@
 
 var Calculator = function() {
 	var self = this;
-	this.operations = { 
-		add : '+', 
-		subtract : '-' , 
-		divide : '/', 
-		multiply : '*', 
-		exponentiate : '^' 
+	this.operations = {
+		add : '+',
+		subtract : '-' ,
+		divide : '/',
+		multiply : '*',
+		exponentiate : '^'
 	};
 	this.ops_order = [
-		[ [this.operations.multiply], [this.operations.divide], [this.operations.exponentiate] ], 
+		[ [this.operations.multiply], [this.operations.divide], [this.operations.exponentiate] ],
 		[ [this.operations.add], [this.operations.subtract] ]
 	];
 	this.special_cases = {
@@ -42,8 +42,8 @@ var Calculator = function() {
 			case this.special_cases.clear_last:
 				this.clearLastCharacter();
 				break;
-			default:	
-				this.addToScreen(i);	
+			default:
+				this.addToScreen(i);
 		}
 	};
 
@@ -60,7 +60,7 @@ var Calculator = function() {
 
 			while (re.test(expression)){
 			 	result = this._calculate(RegExp.$1, RegExp.$2, RegExp.$3);
-			 	if (isNaN(result) || !isFinite(result)) 
+			 	if (isNaN(result) || !isFinite(result))
 			 		return '';
 			 	expression  = expression.replace(re, result);
 			}
@@ -72,19 +72,19 @@ var Calculator = function() {
 		a = a * 1; b = b * 1;
       	switch (op) {
 			case this.operations.add:
-				return a + b; 
+				return a + b;
 				break;
-			case this.operations.subtract: 
-				return a - b; 
+			case this.operations.subtract:
+				return a - b;
 				break;
-			case this.operations.divide: 
-				return a / b; 
+			case this.operations.divide:
+				return a / b;
 				break;
-			case this.operations.multiply: 
-				return a * b; 
+			case this.operations.multiply:
+				return a * b;
 				break;
-			case this.operations.exponentiate: 
-				return Math.pow(a,b); 
+			case this.operations.exponentiate:
+				return Math.pow(a,b);
 				break;
 			default: null;
       	}
@@ -135,8 +135,10 @@ var Calculator = function() {
 				self.clearHistory();
 			});
 		}
-		
+
 	};
+
+	this.bindEvents();
 };
 
 var defaults = {

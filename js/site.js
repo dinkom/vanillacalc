@@ -21,4 +21,7 @@ var Site = function() {
 		    Element.prototype.getElementsByClassName = document.getElementsByClassName;
 		}
 	};
+
+	this.setYear();
+	this.fixOldBrowserCompatibility();
 };

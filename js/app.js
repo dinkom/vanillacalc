@@ -9,8 +9,4 @@
 "use strict";
 
 var site = new Site();
-site.setYear();
-site.fixOldBrowserCompatibility();
-
 var calculator = new Calculator();
-calculator.bindEvents();
